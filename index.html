@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Webdev Toolkit</title>
+    <meta name="description" content="Webdev Toolkit">
+    <meta name="author" content="Tobias Nyström">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/grid-sys.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <nav class="main-nav" role="navigation">
+        <div class="toggle-container">
+          <div class="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+          </div>
+        </div>
+        <div class="inline-nav-container">
+          <ul class="left-nav">
+              <li><a href="#" id="page-generations">Generation</a></li>
+              <li><a href="#" id="page-categories">Cheat sheets</a></li>
+              <li><a href="#" id="page-fonts">Fonts</a></li>
+          </ul>
+          <ul class="center-nav">
+            <li><a href="/">Webdev Toolkit</a></li>
+          </ul>
+          <ul class="right-nav">
+              <li><a href="#" id="page-login" href="#">Login</a></li>
+              <li><a href="#" id="page-signup" href="#">Sign up</a> </li>
+          </ul>
+        </div>
+    </nav>
+
+    <!-- LANDING PAGE -->
+    <section class="landing-page">
+        <header>
+        <div class="col-12">
+            <h1>Welcome!</h1>
+        </div>
+        </header>
+        <div class="row">
+            <div class="col-6">
+                <h2>Application description</h2>
+                <hr>
+                <p>This application was created in order to collect various web development associated tools in one single "easy-to-reach" application. The functions on this page are created from scratch with an attempt from me to try to replicate these great functions that mostly already exists!</p>
+                <p>The more technical part of the application is that you can enter the admin panel and change various properties about the different functions on the page, use the demo account to try it out.</p>
+            </div>
+            <div class="col-6">
+                <h2>Demo</h2>
+                <hr>
+                <p>In order to log in and use the back-end functionality as an "admin", please press the "login" button above and enter the following information...</p>
+                <p>Username: demo<br>Password: demo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOGIN PAGE -->
+    <section class="login-page">
+        <header>
+        <div class="col-12">
+            <h1>Login</h1>
+        </div>
+        </header>
+        <div class="row">
+            <div class="col-12">
+                <form name="login-form">
+                    <label for="username">Username</label>
+                    <input type="text" id="login-username">
+                    <label for="password">Password</label>
+                    <input type="password" id="login-password">
+                    <button id="login-btn">Login</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER PAGE -->
+    <section class="register-page">
+        <header>
+        <div class="col-12">
+            <h1>Register</h1>
+        </div>
+        </header>
+        <div class="row">
+            <div class="col-12">
+                <form name="register-form">
+                    <label for="username">Username</label>
+                    <input type="text" id="register-username">
+                    <label for="password">Password</label>
+                    <input type="password" id="register-password">
+                    <button id="register-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- GENERATION PAGE -->
+    <section class="generation-page">
+        <header>
+        <div class="col-12">
+            <h1>Generation page</h1>
+        </div>
+        </header>
+        <div class="row">
+            <div class="col-6">
+                <div class="input-container">
+                    <form name="input-form">
+                        <legend>Settings</legend>
+                        <label id="num-paragraphs" for="paragraph">Number of paragraphs (1-5)</label>
+                        <input id="num-p-value" type="number" name="paragraph">
+                    </form>
+                </div>
+                <div class="bottom-button-container">
+                    <button id="generate-btn" type="submit">Generate</button>
+                </div>
+                <div class="feedback-container feedback-1">
+                    <p>Error!</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="output-container"></div>
+                <div class="bottom-button-container">
+                    <button id="copy-btn">Copy</button>
+                </div>
+                <div class="feedback-container feedback-2">
+                    <p>Text copied to clipboard!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY PAGE -->
+    <section class="category-page">
+        <header>
+            <div class="col-12">
+                <h1>Category page</h1>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-4">
+                <a href="#" id="c-html"><img src="https://pluralsight.imgix.net/paths/path-icons/html5-7ac65c8ec0.png"></a>
+            </div>
+            <div class="col-4">
+                <a href="#" id="c-css"><img src="https://pluralsight.imgix.net/paths/path-icons/css-c9b214f0d7.png"></a>
+            </div>
+            <div class="col-4">
+                <a href="#" id="c-js"><img src="https://pluralsight.imgix.net/paths/path-icons/javascript-36f5949a45.png"></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <a href="#" id="c-jquery"><img src="https://pluralsight.imgix.net/paths/path-icons/jquery-c93ba170c1.png"></a>
+            </div>
+            <div class="col-4">
+                <a href="#" id="c-node"><img src="https://pluralsight.imgix.net/paths/path-icons/nodejs-601628d09d.png"></a>
+            </div>
+            <div class="col-4">
+                <a href="#" id="c-react"><img src="https://pluralsight2.imgix.net/paths/images/react-0f6558f88f.png"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY SUB-PAGE -->
+    <section class="category-sub-page">
+        <header>
+            <div class="col-12">
+                <h1>Category sub-page</h1>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="arrow-container">
+                    <i class="fa fa-arrow-left" id="back-arrow" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="container">
+                    <div class="col-6">
+                        <h2>Cheat sheet</h2>
+                        <hr>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Link</a>
+                    </div>
+                    <div class="col-6">
+                        <h2>MDN Reference</h2>
+                        <hr>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FONT PAGE -->
+    <section class="font-page">
+        <header>
+            <div class="col-12">
+                <h1>Font page</h1>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col-12">
+                <div class="sort-container">
+                    <button id="alpha">Alpha</button>
+                    <button id="date">Date</button>
+                    <button id="popularity">Popularity</button>
+                    <button id="trending">Trending</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <a href="asd" id="card-1" target="_blank">
+                    <div class="font-card card-1">
+                        <h2>Header</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="asd" id="card-2" target="_blank">
+                    <div class="font-card card-2">
+                        <h2>Header</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="asd" id="card-3" target="_blank">
+                    <div class="font-card card-3">
+                        <h2>Header</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <a href="asd" id="card-4" target="_blank">
+                    <div class="font-card card-4">
+                        <h2>Header</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="asd" id="card-5" target="_blank">
+                    <div class="font-card card-5">
+                        <h2>Header</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-4">
+                <a href="asd" id="card-6" target="_blank">
+                    <div class="font-card card-6">
+                        <h2>Header</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD PAGE -->
+    <section class="dashboard-page">
+        <header>
+        <div class="col-12">
+            <h1>Dashboard</h1>
+        </div>
+        </header>
+        <div class="row">
+            <div class="col-12">
+                <div class="statistics-container">
+                    <h2>Application Statistics</h2>
+                    <p class="center">Welcome USER to the dashboard, in here you can find statistics about the application!</p>
+                    <div class="col-4">
+                            <h4>Total amount of successful logins...</h4>
+                            <div class="sub-statistics-container">
+                                <h3 id="num-logins">0</h3>
+                            </div>
+                    </div>
+                    <div class="col-4">
+                            <h4>Total amount of strings generated...</h4>
+                            <div class="sub-statistics-container">
+                                <h3 id="num-strings">0</h3>
+                            </div>
+                    </div>
+                    <div class="col-4">
+                            <h4>Total amount of fonts generated...</h4>
+                            <div class="sub-statistics-container">
+                                <h3 id="num-fonts">0</h3>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+      <div class="row">
+          <div class="col-12">
+              <div class="icon-group">
+                    <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" class="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
+                    <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" class="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" class="icon"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <p>&copy; <a href="mailto:tobnystrom@gmail.com">Tobias Nyström</a></p>
+          </div>
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="/assets/client.js"></script>
+  </body>
+</html>
