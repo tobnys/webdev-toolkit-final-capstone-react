@@ -193,7 +193,7 @@
     function webFontsReq(target){
         $.ajax({
             method: "GET",
-            url: `http://localhost:3000/api/functional/fonts/${target}`,
+            url: `https://webdev-toolkit.herokuapp.com/api/functional/fonts/${target}`,
             success: function(res){
                 console.log("API call success");
                 appendHTML(res);
@@ -255,7 +255,7 @@
     function generationReq(p){
         $.ajax({
             method: "GET",
-            url: `http://localhost:3000/api/functional/text/`,
+            url: `https://webdev-toolkit.herokuapp.com/api/functional/text/`,
             data: {
                 p: p,
             },
@@ -285,7 +285,7 @@
     function registerUser(u, p){
         $.ajax({
             method: "POST",
-            url: `http://localhost:3000/api/users/register`,
+            url: `https://webdev-toolkit.herokuapp.com/api/users/register`,
             data: {
                 username: u,
                 password: p
@@ -310,7 +310,7 @@
     function loginUser(u, p){
         $.ajax({
             method: "POST",
-            url: `http://localhost:3000/api/users/login`,
+            url: `https://webdev-toolkit.herokuapp.com/api/users/login`,
             data: {
                 username: u,
                 password: p
@@ -340,10 +340,11 @@
         populateDashboard();
     };
 
+    // POPULATE DASHBOARD
     function populateDashboard(){
         $.ajax({
             method: "GET",
-            url: `http://localhost:3000/api/functional/statistics`,
+            url: `https://webdev-toolkit.herokuapp.com/api/functional/statistics`,
             success: function(res){
                 console.log("API call success");
                 // APPEND TEXT
