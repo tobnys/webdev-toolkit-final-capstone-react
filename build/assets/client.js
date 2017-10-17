@@ -1,4 +1,8 @@
-(function () {
+
+
+
+
+$(document).ready(function(){
     let currentPage = ".landing-page";
 
     // HAMBURGER MENU FUNCTIONS
@@ -370,4 +374,4 @@
         switchPage(".dashboard-page", ".font-page");
     });
 
-})();
+});
