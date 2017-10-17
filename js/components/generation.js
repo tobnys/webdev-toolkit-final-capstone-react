@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 class Generation extends Component {
     render(){
         return(
-            <section class="generation-page">
+            <section className="generation-page">
                 <header>
-                <div class="col-12">
+                <div className="col-12">
                     <h1>Generation page</h1>
                 </div>
                 </header>
@@ -15,7 +15,7 @@ class Generation extends Component {
                         <div className="input-container">
                             <form name="input-form">
                                 <legend>Settings</legend>
-                                <label id="num-paragraphs" for="paragraph">Number of paragraphs (1-5)</label>
+                                <label id="num-paragraphs" htmlFor="paragraph">Number of paragraphs (1-5)</label>
                                 <input id="num-p-value" type="number" name="paragraph"/>
                             </form>
                         </div>

@@ -8,9 +8,9 @@ class Footer extends Component {
                 <div className="row">
                     <div className="col-12">
                         <div className="icon-group">
-                            <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" className="icon"><i class="fa fa-github" aria-hidden="true"></i></a>
-                            <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" className="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" className="icon"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
+                            <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" className="icon"><i className="fa fa-github" aria-hidden="true"></i></a>
+                            <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" className="icon"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://github.com/tobnys/webdev-toolkit-final-capstone" target="_blank" className="icon"><i className="fa fa-briefcase" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>

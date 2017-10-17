@@ -13,9 +13,9 @@ class Login extends Component {
                 <div className="row">
                     <div className="col-12">
                         <form name="login-form">
-                            <label for="username">Username</label>
+                            <label htmlFor="username">Username</label>
                             <input type="text" id="login-username"/>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <input type="password" id="login-password"/>
                             <button id="loginBtn">Login</button>
                         </form>

@@ -2,7 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Navigation from '../js/components/navigation';
-import Landing from "../js/components/landing"
+import Landing from "../js/components/landing";
+import Login from "../js/components/login";
+import Register from "../js/components/register";
+import Generation from "../js/components/generation";
+import Category from "../js/components/category";
+import CategorySub from "../js/components/categorysub";
+import Font from "../js/components/font";
+import Dashboard from "../js/components/dashboard";
+import Footer from "../js/components/footer";
 
 document.addEventListener('DOMContentLoaded', () => {
     return ReactDOM.render(<Navigation />, document.getElementById('reactNavigation'));
