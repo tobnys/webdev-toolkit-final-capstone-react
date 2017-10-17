@@ -117,7 +117,8 @@
         webFontsReq(e.target.id);
     });
 
-    $("#page-login").click(function(e){
+    $("#pageLogin").click(function(e){
+        console.log("Hello");
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".login-page");
@@ -300,7 +301,7 @@
         });
     }
 
-    $("#login-btn").click(function(e){
+    $("#loginBtn").on("click", function(e){
         e.preventDefault();
         var usernameVal = $("#login-username").val();
         var passwordVal = $("#login-password").val();
