@@ -1,7 +1,27 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-class Login extends Component {
+const {connect} = require('react-redux');
+
+const {loginUser} = require("../actions/index");
+
+export class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+
+    sendUserInfo(){
+        let usernameInput = this.refs.userName.value;
+        let passwordInput = this.refs.password.value;
+
+        //console.log(usernameInput);
+        //console.log(passwordInput);
+
+        this.props.dispatch(actions.loginUser(usernameInput, passwordInput));
+        console.log(this.props);
+    }
+
     render(){
         return(
             <section className="login-page">
@@ -14,10 +34,10 @@ class Login extends Component {
                     <div className="col-12">
                         <form name="login-form">
                             <label htmlFor="username">Username</label>
-                            <input type="text" id="login-username"/>
+                            <input type="text" id="login-username" ref="userName"/>
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="login-password"/>
-                            <button id="loginBtn">Login</button>
+                            <input type="password" id="login-password" ref="password"/>
+                            <button id="loginBtn" onClick={this.sendUserInfo.bind(this)}>Login</button>
                         </form>
                     </div>
                 </div>
@@ -26,4 +46,4 @@ class Login extends Component {
     }
 }
 
-module.exports = Login;
+export default connect()(Login);
