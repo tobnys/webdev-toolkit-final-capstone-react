@@ -115,6 +115,7 @@
 	});
 	
 	/*
+	
 	document.addEventListener('DOMContentLoaded', () => {
 	    return ReactDOM.render(<Navigation />, document.getElementById('reactLanding'));
 	});
@@ -23831,32 +23832,47 @@
 	  value: true
 	});
 	
-	var _index = __webpack_require__(217);
+	var _redux = __webpack_require__(193);
 	
-	var redux = __webpack_require__(193);
-	var createStore = redux.createStore;
-	var applyMiddleware = redux.applyMiddleware;
-	var thunk = __webpack_require__(221).default;
+	var _reduxThunk = __webpack_require__(217);
 	
-	exports.default = createStore(_index.webdevReducer, applyMiddleware(thunk));
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+	
+	var _index = __webpack_require__(218);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = (0, _redux.createStore)(_index.webdevReducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));
+	
+	// REDUCER
 
 /***/ }),
 /* 217 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
-	var actions = __webpack_require__(218);
+	exports.__esModule = true;
+	function createThunkMiddleware(extraArgument) {
+	  return function (_ref) {
+	    var dispatch = _ref.dispatch,
+	        getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        if (typeof action === 'function') {
+	          return action(dispatch, getState, extraArgument);
+	        }
 	
-	var webdevReducer = function webdevReducer(state, action) {
-	    state = state || "Testing";
-	    if (action.type === actions.LOGIN_USER) {
-	        console.log(action.username);
-	        console.log(action.password);
-	    }
-	};
+	        return next(action);
+	      };
+	    };
+	  };
+	}
 	
-	exports.webdevReducer = webdevReducer;
+	var thunk = createThunkMiddleware();
+	thunk.withExtraArgument = createThunkMiddleware;
+	
+	exports['default'] = thunk;
 
 /***/ }),
 /* 218 */
@@ -23864,34 +23880,73 @@
 
 	"use strict";
 	
-	__webpack_require__(219);
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var actions = __webpack_require__(219);
 	
-	var LOGIN_USER = "LOGIN_USER";
-	var loginUser = function loginUser(username, password) {
-	    return {
-	        type: LOGIN_USER,
-	        username: username,
-	        password: password
-	    };
+	var webdevReducer = exports.webdevReducer = function webdevReducer(state, action) {
+	    state = state || "Testing";
+	    if (action.type === actions.LOGIN_USER_SUCCESS) {
+	        console.log(action.user);
+	        return action.user;
+	    }
+	    return state;
 	};
-	
-	exports.LOGIN_USER = LOGIN_USER;
-	exports.loginUser = loginUser;
 
 /***/ }),
 /* 219 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	__webpack_require__(220);
+	
+	var LOGIN_USER = exports.LOGIN_USER = "LOGIN_USER";
+	var loginUser = exports.loginUser = function loginUser(username, password) {
+	  return function (dispatch) {
+	    fetch("https://webdev-toolkit.herokuapp.com/api/users/login", {
+	      method: "POST",
+	      data: {
+	        username: username,
+	        password: password
+	      }
+	    }).then(function (res) {
+	      if (!res.ok) {
+	        return Promise.reject(res.statusText);
+	      }
+	      return res.json();
+	    }).then(function (user) {
+	      dispatch(loginUserSuccess(user));
+	    });
+	  };
+	};
+	
+	var LOGIN_USER_SUCCESS = exports.LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+	var loginUserSuccess = exports.loginUserSuccess = function loginUserSuccess(user) {
+	  return {
+	    type: LOGIN_USER_SUCCESS,
+	    user: user
+	  };
+	};
+
+/***/ }),
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(220);
+	__webpack_require__(221);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ }),
-/* 220 */
+/* 221 */
 /***/ (function(module, exports) {
 
 	(function(self) {
@@ -24358,34 +24413,6 @@
 
 
 /***/ }),
-/* 221 */
-/***/ (function(module, exports) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	function createThunkMiddleware(extraArgument) {
-	  return function (_ref) {
-	    var dispatch = _ref.dispatch,
-	        getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        if (typeof action === 'function') {
-	          return action(dispatch, getState, extraArgument);
-	        }
-	
-	        return next(action);
-	      };
-	    };
-	  };
-	}
-	
-	var thunk = createThunkMiddleware();
-	thunk.withExtraArgument = createThunkMiddleware;
-	
-	exports['default'] = thunk;
-
-/***/ }),
 /* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24412,6 +24439,38 @@
 	var _landing = __webpack_require__(224);
 	
 	var _landing2 = _interopRequireDefault(_landing);
+	
+	var _login = __webpack_require__(225);
+	
+	var _login2 = _interopRequireDefault(_login);
+	
+	var _register = __webpack_require__(226);
+	
+	var _register2 = _interopRequireDefault(_register);
+	
+	var _generation = __webpack_require__(227);
+	
+	var _generation2 = _interopRequireDefault(_generation);
+	
+	var _category = __webpack_require__(228);
+	
+	var _category2 = _interopRequireDefault(_category);
+	
+	var _categorysub = __webpack_require__(229);
+	
+	var _categorysub2 = _interopRequireDefault(_categorysub);
+	
+	var _font = __webpack_require__(230);
+	
+	var _font2 = _interopRequireDefault(_font);
+	
+	var _dashboard = __webpack_require__(231);
+	
+	var _dashboard2 = _interopRequireDefault(_dashboard);
+	
+	var _footer = __webpack_require__(232);
+	
+	var _footer2 = _interopRequireDefault(_footer);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -24440,7 +24499,15 @@
 	                "div",
 	                null,
 	                _react2.default.createElement(_navigation2.default, null),
-	                _react2.default.createElement(_landing2.default, null)
+	                _react2.default.createElement(_landing2.default, null),
+	                _react2.default.createElement(_login2.default, null),
+	                _react2.default.createElement(_register2.default, null),
+	                _react2.default.createElement(_generation2.default, null),
+	                _react2.default.createElement(_category2.default, null),
+	                _react2.default.createElement(_categorysub2.default, null),
+	                _react2.default.createElement(_font2.default, null),
+	                _react2.default.createElement(_dashboard2.default, null),
+	                _react2.default.createElement(_footer2.default, null)
 	            );
 	        }
 	    }]);
@@ -24455,6 +24522,10 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24580,7 +24651,7 @@
 	    return Navigation;
 	}(_react.Component);
 	
-	module.exports = Navigation;
+	exports.default = Navigation;
 
 /***/ }),
 /* 224 */
@@ -24722,7 +24793,7 @@
 	var _require = __webpack_require__(184),
 	    connect = _require.connect;
 	
-	var _require2 = __webpack_require__(218),
+	var _require2 = __webpack_require__(219),
 	    loginUser = _require2.loginUser;
 	
 	var Login = exports.Login = function (_Component) {
@@ -24743,11 +24814,7 @@
 	            var usernameInput = this.refs.userName.value;
 	            var passwordInput = this.refs.password.value;
 	
-	            //console.log(usernameInput);
-	            //console.log(passwordInput);
-	
-	            this.props.dispatch(actions.loginUser(usernameInput, passwordInput));
-	            console.log(this.props);
+	            this.props.dispatch(loginUser(usernameInput, passwordInput));
 	        }
 	    }, {
 	        key: "render",

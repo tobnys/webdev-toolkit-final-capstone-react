@@ -305,11 +305,13 @@ $(document).ready(function(){
         });
     }
 
+
     $("#loginBtn").on("click", function(e){
         e.preventDefault();
-        var usernameVal = $("#login-username").val();
-        var passwordVal = $("#login-password").val();
-        loginUser(usernameVal, passwordVal);
+        //var usernameVal = $("#login-username").val();
+        //var passwordVal = $("#login-password").val();
+        redirectWelcome("hello");
+        //loginUser(usernameVal, passwordVal);
     });
 
     function loginUser(u, p){
@@ -322,7 +324,7 @@ $(document).ready(function(){
             },
             success: function(res){
                 console.log("API call success");
-                redirectWelcome(res);
+                
             },
             error: function(err){
                 console.log("API call failed");

@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*
+
 document.addEventListener('DOMContentLoaded', () => {
     return ReactDOM.render(<Navigation />, document.getElementById('reactLanding'));
 });

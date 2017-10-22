@@ -1,11 +1,11 @@
 const actions = require("../actions/index");
 
-let webdevReducer = function(state, action) {
+export const webdevReducer = (state, action) => {
     state = state || "Testing";
-    if(action.type === actions.LOGIN_USER){
-        console.log(action.username);
-        console.log(action.password);
+    if (action.type === actions.LOGIN_USER_SUCCESS) {
+        console.log(action.user);
+        return action.user;
     }
+    return state;
 };
 
-exports.webdevReducer = webdevReducer;

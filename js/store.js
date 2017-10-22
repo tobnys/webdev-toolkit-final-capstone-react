@@ -1,8 +1,7 @@
-var redux = require('redux');
-var createStore = redux.createStore;
-var applyMiddleware = redux.applyMiddleware;
-var thunk = require('redux-thunk').default;
+import {createStore, applyMiddleware} from "redux";
+import thunk from 'redux-thunk';
 
+// REDUCER
 import {webdevReducer} from './reducers/index';
 
 export default createStore(webdevReducer, applyMiddleware(thunk));

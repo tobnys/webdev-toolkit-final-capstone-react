@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-class Navigation extends Component {
+export default class Navigation extends Component {
     render(){
         return(
             <nav className="main-nav" role="navigation">
@@ -30,5 +30,3 @@ class Navigation extends Component {
         )
     }
 }
-
-module.exports = Navigation;
