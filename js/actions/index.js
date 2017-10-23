@@ -4,12 +4,17 @@ export const LOGIN_USER = "LOGIN_USER";
 export const loginUser = (username, password) => dispatch => {
   fetch("https://webdev-toolkit.herokuapp.com/api/users/login", {
     method: "POST",
-    data: {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body:  JSON.stringify({
       username: username,
       password: password
-    }
+    })
   })
     .then(res => {
+      console.log(res);
       if (!res.ok) {
         return Promise.reject(res.statusText);
       }

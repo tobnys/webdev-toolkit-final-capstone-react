@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
     render(){
         return(
             <section className="dashboard-page">
@@ -59,5 +59,3 @@ class Dashboard extends Component {
         )
     }
 }
-
-module.exports = Dashboard;

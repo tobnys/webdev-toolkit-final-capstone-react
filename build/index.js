@@ -23885,11 +23885,18 @@
 	});
 	var actions = __webpack_require__(219);
 	
+	//console.log(props.user)
+	
+	var initialState = {
+	    user: "hello123"
+	};
+	
 	var webdevReducer = exports.webdevReducer = function webdevReducer(state, action) {
-	    state = state || "Testing";
 	    if (action.type === actions.LOGIN_USER_SUCCESS) {
 	        console.log(action.user);
-	        return action.user;
+	        return Object.assign({}, state, {
+	            user: action.user.username
+	        });
 	    }
 	    return state;
 	};
@@ -23910,11 +23917,16 @@
 	  return function (dispatch) {
 	    fetch("https://webdev-toolkit.herokuapp.com/api/users/login", {
 	      method: "POST",
-	      data: {
+	      headers: {
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
 	        username: username,
 	        password: password
-	      }
+	      })
 	    }).then(function (res) {
+	      console.log(res);
 	      if (!res.ok) {
 	        return Promise.reject(res.statusText);
 	      }
@@ -24802,10 +24814,7 @@
 	    function Login(props) {
 	        _classCallCheck(this, Login);
 	
-	        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
-	
-	        _this.state = {};
-	        return _this;
+	        return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
 	    }
 	
 	    _createClass(Login, [{
@@ -24813,12 +24822,13 @@
 	        value: function sendUserInfo() {
 	            var usernameInput = this.refs.userName.value;
 	            var passwordInput = this.refs.password.value;
-	
 	            this.props.dispatch(loginUser(usernameInput, passwordInput));
 	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
+	            console.log(this.props.user);
+	
 	            return _react2.default.createElement(
 	                "section",
 	                { className: "login-page" },
@@ -24831,7 +24841,8 @@
 	                        _react2.default.createElement(
 	                            "h1",
 	                            null,
-	                            "Login"
+	                            "Hello ",
+	                            this.props.user
 	                        )
 	                    )
 	                ),
@@ -24870,6 +24881,12 @@
 	
 	    return Login;
 	}(_react.Component);
+	
+	/*
+	const mapStateToProps = state => ({
+	    user: state.user
+	});
+	*/
 	
 	exports.default = connect()(Login);
 
@@ -25570,6 +25587,10 @@
 
 	"use strict";
 	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -25746,7 +25767,7 @@
 	    return Dashboard;
 	}(_react.Component);
 	
-	module.exports = Dashboard;
+	exports.default = Dashboard;
 
 /***/ }),
 /* 232 */

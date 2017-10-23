@@ -16,11 +16,13 @@ export class Login extends Component {
     }
 
     render() {
+        console.log(this.props.user);
+
         return (
             <section className="login-page">
                 <header>
                     <div className="col-12">
-                        <h1>Login</h1>
+                        <h1>Hello {this.props.user}</h1>
                     </div>
                 </header>
                 <div className="row">
@@ -39,8 +41,10 @@ export class Login extends Component {
     }
 }
 
+/*
 const mapStateToProps = state => ({
     user: state.user
 });
+*/
 
-export default connect(mapStateToProps)(Login);
+export default connect()(Login);
