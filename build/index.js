@@ -23883,7 +23883,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var actions = __webpack_require__(219);
+	exports.webdevReducer = undefined;
+	
+	var _index = __webpack_require__(219);
+	
+	var actions = _interopRequireWildcard(_index);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	//console.log(props.user)
 	
@@ -23891,7 +23897,10 @@
 	    user: "hello123"
 	};
 	
-	var webdevReducer = exports.webdevReducer = function webdevReducer(state, action) {
+	var webdevReducer = exports.webdevReducer = function webdevReducer() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	    var action = arguments[1];
+	
 	    if (action.type === actions.LOGIN_USER_SUCCESS) {
 	        console.log(action.user);
 	        return Object.assign({}, state, {
@@ -24882,13 +24891,13 @@
 	    return Login;
 	}(_react.Component);
 	
-	/*
-	const mapStateToProps = state => ({
-	    user: state.user
-	});
-	*/
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        user: state.user
+	    };
+	};
 	
-	exports.default = connect()(Login);
+	exports.default = connect(mapStateToProps)(Login);
 
 /***/ }),
 /* 226 */
