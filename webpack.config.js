@@ -17,13 +17,18 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                loader: 'babel',
+                test: /\.jsx?$/,
+                // include: [
+                //    /node_modules/,
+                //   path.resolve(__dirname, '..')
+                // ],
+                exclude: /node_modules/,
+                loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'react']
                 }
-            }
+            },
+            { test: /\.json$/, loader: "json-loader" },
         ]
     }
 };

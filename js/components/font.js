@@ -1,7 +1,26 @@
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-class Font extends Component {
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+
+Enzyme.configure({adapter: new Adapter()});
+
+const {connect} = require('react-redux');
+const {fetchFont} = require("../actions/index");
+
+export class Font extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    sendFontCall(e) {
+        //this.props.dispatch(fetchFont(e.target.id));
+    }
+
     render(){
         return(
             <section className="font-page">
@@ -13,10 +32,10 @@ class Font extends Component {
                 <div className="row">
                     <div className="col-12">
                         <div className="sort-container">
-                            <button id="alpha">Alpha</button>
-                            <button id="date">Date</button>
-                            <button id="popularity">Popularity</button>
-                            <button id="trending">Trending</button>
+                            <button id="alpha" onClick={this.sendFontCall.bind(this)}>Alpha</button>
+                            <button id="date" onClick={this.sendFontCall.bind(this)}>Date</button>
+                            <button id="popularity" onClick={this.sendFontCall.bind(this)}>Popularity</button>
+                            <button id="trending" onClick={this.sendFontCall.bind(this)}>Trending</button>
                         </div>
                     </div>
                 </div>
@@ -24,7 +43,7 @@ class Font extends Component {
                     <div className="col-4">
                         <a href="asd" id="card-1" target="_blank">
                             <div className="font-card card-1">
-                                <h2>Header</h2>
+                                <h2>Hello</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
                             </div>
                         </a>
@@ -77,4 +96,4 @@ class Font extends Component {
     }
 }
 
-module.exports = Font;
+export default connect()(Font);

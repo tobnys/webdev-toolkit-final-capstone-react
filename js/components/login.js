@@ -1,8 +1,16 @@
-import React, { Component } from "react";
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+
+import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-const { connect } = require('react-redux');
-const { loginUser } = require("../actions/index");
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+
+Enzyme.configure({adapter: new Adapter()});
+
+const {connect} = require('react-redux');
+const {loginUser} = require("../actions/index");
 
 export class Login extends Component {
     constructor(props) {
@@ -16,8 +24,6 @@ export class Login extends Component {
     }
 
     render() {
-        console.log(this.props.user);
-
         return (
             <section className="login-page">
                 <header>

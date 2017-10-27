@@ -106,23 +106,22 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	document.addEventListener('DOMContentLoaded', function () {
-	    return _reactDom2.default.render(_react2.default.createElement(
-	        _reactRedux.Provider,
-	        { store: _store2.default },
-	        _react2.default.createElement(_app2.default, null)
-	    ), document.getElementById('reactNavigation'));
-	});
+	_reactDom2.default.render(_react2.default.createElement(
+	    _reactRedux.Provider,
+	    { store: _store2.default },
+	    _react2.default.createElement(_app2.default, null)
+	), document.getElementById('reactRoot'));
 	
 	/*
-	
 	document.addEventListener('DOMContentLoaded', () => {
-	    return ReactDOM.render(<Navigation />, document.getElementById('reactLanding'));
+	    return ReactDOM.render(<Landing />, document.getElementById('reactNavigation'));
 	});
 
+
 	document.addEventListener('DOMContentLoaded', () => {
-	    return ReactDOM.render(<Landing />, document.getElementById('reactLanding'));
+	    return ReactDOM.render(<Generation />, document.getElementById('reactGeneration'));
 	});
+
 
 	document.addEventListener('DOMContentLoaded', () => {
 	    return ReactDOM.render(<Login />, document.getElementById('reactLanding'));
@@ -23894,7 +23893,9 @@
 	//console.log(props.user)
 	
 	var initialState = {
-	    user: "hello123"
+	    user: "user",
+	    isLoggedin: false,
+	    fonts: "Font"
 	};
 	
 	var webdevReducer = exports.webdevReducer = function webdevReducer() {
@@ -23904,7 +23905,15 @@
 	    if (action.type === actions.LOGIN_USER_SUCCESS) {
 	        console.log(action.user);
 	        return Object.assign({}, state, {
-	            user: action.user.username
+	            user: action.user.username,
+	            isLoggedin: true
+	        });
+	    } else if (action.type === actions.REGISTER_USER_SUCCESS) {
+	        console.log(action.user + " has successfully registered.");
+	    } else if (action.type === actions.FETCH_FONT_SUCCESS) {
+	        console.log("Successfully called fonts from API");
+	        return Object.assign({}, state, {
+	            fonts: action.fonts
 	        });
 	    }
 	    return state;
@@ -23921,6 +23930,7 @@
 	});
 	__webpack_require__(220);
 	
+	// LOGIN
 	var LOGIN_USER = exports.LOGIN_USER = "LOGIN_USER";
 	var loginUser = exports.loginUser = function loginUser(username, password) {
 	  return function (dispatch) {
@@ -23951,6 +23961,70 @@
 	  return {
 	    type: LOGIN_USER_SUCCESS,
 	    user: user
+	  };
+	};
+	
+	// REGISTER
+	var REGISTER_USER = exports.REGISTER_USER = "REGISTER_USER";
+	var registerUser = exports.registerUser = function registerUser(username, password) {
+	  return function (dispatch) {
+	    fetch("https://webdev-toolkit.herokuapp.com/api/users/register", {
+	      method: "POST",
+	      headers: {
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        username: username,
+	        password: password
+	      })
+	    }).then(function (res) {
+	      console.log(res);
+	      if (!res.ok) {
+	        return Promise.reject(res.statusText);
+	      }
+	      return res.json();
+	    }).then(function (user) {
+	      dispatch(registerUserSuccess(user));
+	    });
+	  };
+	};
+	
+	var REGISTER_USER_SUCCESS = exports.REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
+	var registerUserSuccess = exports.registerUserSuccess = function registerUserSuccess(user) {
+	  return {
+	    type: REGISTER_USER_SUCCESS,
+	    user: user
+	  };
+	};
+	
+	// FONTS
+	var FETCH_FONT = exports.FETCH_FONT = "FETCH_FONT";
+	var fetchFont = exports.fetchFont = function fetchFont(sort) {
+	  return function (dispatch) {
+	    fetch("https://webdev-toolkit.herokuapp.com/api/functional/fonts/" + sort, {
+	      method: "GET",
+	      headers: {
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json'
+	      }
+	    }).then(function (res) {
+	      console.log(res);
+	      if (!res.ok) {
+	        return Promise.reject(res.statusText);
+	      }
+	      return res.json();
+	    }).then(function (fonts) {
+	      dispatch(fetchFontSuccess(fonts));
+	    });
+	  };
+	};
+	
+	var FETCH_FONT_SUCCESS = exports.FETCH_FONT_SUCCESS = "FETCH_FONT_SUCCESS";
+	var fetchFontSuccess = exports.fetchFontSuccess = function fetchFontSuccess(fonts) {
+	  return {
+	    type: FETCH_FONT_SUCCESS,
+	    fonts: fonts
 	  };
 	};
 
@@ -24547,6 +24621,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.Navigation = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24568,18 +24643,66 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Navigation = function (_Component) {
+	var _require = __webpack_require__(184),
+	    connect = _require.connect;
+	
+	var Navigation = exports.Navigation = function (_Component) {
 	    _inherits(Navigation, _Component);
 	
-	    function Navigation() {
+	    function Navigation(props) {
 	        _classCallCheck(this, Navigation);
 	
-	        return _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).call(this, props));
 	    }
 	
 	    _createClass(Navigation, [{
 	        key: "render",
 	        value: function render() {
+	            var isLoggedin = this.props.isLoggedin;
+	            function RightNav(props) {
+	                if (props.isLoggedin) {
+	                    console.log(props.isLoggedin);
+	                    console.log("User is logged in");
+	                    return _react2.default.createElement(
+	                        "ul",
+	                        { className: "right-nav" },
+	                        _react2.default.createElement(
+	                            "li",
+	                            null,
+	                            _react2.default.createElement(
+	                                "a",
+	                                { href: "#", id: "page-dashboard" },
+	                                "Dashboard"
+	                            )
+	                        )
+	                    );
+	                } else {
+	                    console.log("User is not logged in");
+	                    return _react2.default.createElement(
+	                        "ul",
+	                        { className: "right-nav" },
+	                        _react2.default.createElement(
+	                            "li",
+	                            null,
+	                            _react2.default.createElement(
+	                                "a",
+	                                _defineProperty({ href: "#", id: "pageLogin" }, "href", "#"),
+	                                "Login"
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            "li",
+	                            null,
+	                            _react2.default.createElement(
+	                                "a",
+	                                _defineProperty({ href: "#", id: "page-signup" }, "href", "#"),
+	                                "Sign up"
+	                            )
+	                        )
+	                    );
+	                }
+	            }
+	
 	            return _react2.default.createElement(
 	                "nav",
 	                { className: "main-nav", role: "navigation" },
@@ -24641,29 +24764,7 @@
 	                            )
 	                        )
 	                    ),
-	                    _react2.default.createElement(
-	                        "ul",
-	                        { className: "right-nav" },
-	                        _react2.default.createElement(
-	                            "li",
-	                            null,
-	                            _react2.default.createElement(
-	                                "a",
-	                                _defineProperty({ href: "#", id: "pageLogin" }, "href", "#"),
-	                                "Login"
-	                            )
-	                        ),
-	                        _react2.default.createElement(
-	                            "li",
-	                            null,
-	                            _react2.default.createElement(
-	                                "a",
-	                                _defineProperty({ href: "#", id: "page-signup" }, "href", "#"),
-	                                "Sign up"
-	                            ),
-	                            " "
-	                        )
-	                    )
+	                    _react2.default.createElement(RightNav, { isLoggedin: isLoggedin })
 	                )
 	            );
 	        }
@@ -24672,13 +24773,24 @@
 	    return Navigation;
 	}(_react.Component);
 	
-	exports.default = Navigation;
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        user: state.user,
+	        isLoggedin: state.isLoggedin
+	    };
+	};
+	
+	exports.default = connect(mapStateToProps)(Navigation);
 
 /***/ }),
 /* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -24780,7 +24892,7 @@
 	    return Landing;
 	}(_react.Component);
 	
-	module.exports = Landing;
+	exports.default = Landing;
 
 /***/ }),
 /* 225 */
@@ -24836,8 +24948,6 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            console.log(this.props.user);
-	
 	            return _react2.default.createElement(
 	                "section",
 	                { className: "login-page" },
@@ -24905,6 +25015,11 @@
 
 	"use strict";
 	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Register = undefined;
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -24923,16 +25038,29 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Register = function (_Component) {
+	var _require = __webpack_require__(184),
+	    connect = _require.connect;
+	
+	var _require2 = __webpack_require__(219),
+	    registerUser = _require2.registerUser;
+	
+	var Register = exports.Register = function (_Component) {
 	    _inherits(Register, _Component);
 	
-	    function Register() {
+	    function Register(props) {
 	        _classCallCheck(this, Register);
 	
-	        return _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
 	    }
 	
 	    _createClass(Register, [{
+	        key: "sendUserInfo",
+	        value: function sendUserInfo() {
+	            var usernameInput = this.refs.userName.value;
+	            var passwordInput = this.refs.password.value;
+	            this.props.dispatch(registerUser(usernameInput, passwordInput));
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -24965,16 +25093,16 @@
 	                                { htmlFor: "username" },
 	                                "Username"
 	                            ),
-	                            _react2.default.createElement("input", { type: "text", id: "register-username" }),
+	                            _react2.default.createElement("input", { type: "text", id: "register-username", ref: "userName" }),
 	                            _react2.default.createElement(
 	                                "label",
 	                                { htmlFor: "password" },
 	                                "Password"
 	                            ),
-	                            _react2.default.createElement("input", { type: "password", id: "register-password" }),
+	                            _react2.default.createElement("input", { type: "password", id: "register-password", ref: "password" }),
 	                            _react2.default.createElement(
 	                                "button",
-	                                { id: "register-btn" },
+	                                { id: "register-btn", onClick: this.sendUserInfo.bind(this) },
 	                                "Register"
 	                            )
 	                        )
@@ -24987,7 +25115,7 @@
 	    return Register;
 	}(_react.Component);
 	
-	module.exports = Register;
+	exports.default = connect()(Register);
 
 /***/ }),
 /* 227 */
@@ -25363,6 +25491,11 @@
 
 	"use strict";
 	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Font = undefined;
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(1);
@@ -25381,16 +25514,27 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Font = function (_Component) {
+	var _require = __webpack_require__(184),
+	    connect = _require.connect;
+	
+	var _require2 = __webpack_require__(219),
+	    fetchFont = _require2.fetchFont;
+	
+	var Font = exports.Font = function (_Component) {
 	    _inherits(Font, _Component);
 	
-	    function Font() {
+	    function Font(props) {
 	        _classCallCheck(this, Font);
 	
-	        return _possibleConstructorReturn(this, (Font.__proto__ || Object.getPrototypeOf(Font)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Font.__proto__ || Object.getPrototypeOf(Font)).call(this, props));
 	    }
 	
 	    _createClass(Font, [{
+	        key: "sendFontCall",
+	        value: function sendFontCall(e) {
+	            //this.props.dispatch(fetchFont(e.target.id));
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -25420,22 +25564,22 @@
 	                            { className: "sort-container" },
 	                            _react2.default.createElement(
 	                                "button",
-	                                { id: "alpha" },
+	                                { id: "alpha", onClick: this.sendFontCall.bind(this) },
 	                                "Alpha"
 	                            ),
 	                            _react2.default.createElement(
 	                                "button",
-	                                { id: "date" },
+	                                { id: "date", onClick: this.sendFontCall.bind(this) },
 	                                "Date"
 	                            ),
 	                            _react2.default.createElement(
 	                                "button",
-	                                { id: "popularity" },
+	                                { id: "popularity", onClick: this.sendFontCall.bind(this) },
 	                                "Popularity"
 	                            ),
 	                            _react2.default.createElement(
 	                                "button",
-	                                { id: "trending" },
+	                                { id: "trending", onClick: this.sendFontCall.bind(this) },
 	                                "Trending"
 	                            )
 	                        )
@@ -25456,7 +25600,7 @@
 	                                _react2.default.createElement(
 	                                    "h2",
 	                                    null,
-	                                    "Header"
+	                                    "Hello"
 	                                ),
 	                                _react2.default.createElement(
 	                                    "p",
@@ -25588,7 +25732,7 @@
 	    return Font;
 	}(_react.Component);
 	
-	module.exports = Font;
+	exports.default = connect()(Font);
 
 /***/ }),
 /* 231 */
@@ -25599,6 +25743,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.Dashboard = undefined;
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
@@ -25618,13 +25763,16 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var Dashboard = function (_Component) {
+	var _require = __webpack_require__(184),
+	    connect = _require.connect;
+	
+	var Dashboard = exports.Dashboard = function (_Component) {
 	    _inherits(Dashboard, _Component);
 	
-	    function Dashboard() {
+	    function Dashboard(props) {
 	        _classCallCheck(this, Dashboard);
 	
-	        return _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).apply(this, arguments));
+	        return _possibleConstructorReturn(this, (Dashboard.__proto__ || Object.getPrototypeOf(Dashboard)).call(this, props));
 	    }
 	
 	    _createClass(Dashboard, [{
@@ -25663,7 +25811,9 @@
 	                            _react2.default.createElement(
 	                                "p",
 	                                { className: "center" },
-	                                "Welcome USER to the dashboard, in here you can find statistics about the application!"
+	                                "Welcome ",
+	                                this.props.user,
+	                                " to the dashboard, in here you can find statistics about the application!"
 	                            ),
 	                            _react2.default.createElement(
 	                                "div",
@@ -25776,7 +25926,13 @@
 	    return Dashboard;
 	}(_react.Component);
 	
-	exports.default = Dashboard;
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        user: state.user
+	    };
+	};
+	
+	exports.default = connect(mapStateToProps)(Dashboard);
 
 /***/ }),
 /* 232 */

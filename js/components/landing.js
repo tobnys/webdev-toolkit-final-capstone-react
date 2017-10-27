@@ -1,7 +1,15 @@
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
-class Landing extends Component {
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
+
+Enzyme.configure({adapter: new Adapter()});
+
+export default class Landing extends Component {
     render(){
         return(
             <section className="landing-page">
@@ -28,5 +36,3 @@ class Landing extends Component {
         )
     }
 }
-
-module.exports = Landing;

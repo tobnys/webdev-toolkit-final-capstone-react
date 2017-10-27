@@ -15,23 +15,25 @@ import Font from "../js/components/font";
 import Dashboard from "../js/components/dashboard";
 import Footer from "../js/components/footer";
 
-document.addEventListener('DOMContentLoaded', () => {
-    return ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
-        document.getElementById('reactNavigation'));
-});
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('reactRoot')
+);
+
+
 
 /*
-
 document.addEventListener('DOMContentLoaded', () => {
-    return ReactDOM.render(<Navigation />, document.getElementById('reactLanding'));
+    return ReactDOM.render(<Landing />, document.getElementById('reactNavigation'));
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    return ReactDOM.render(<Landing />, document.getElementById('reactLanding'));
+    return ReactDOM.render(<Generation />, document.getElementById('reactGeneration'));
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     return ReactDOM.render(<Login />, document.getElementById('reactLanding'));
