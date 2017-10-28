@@ -1,10 +1,10 @@
 import React from 'react';
 import {shallow, mount, render} from 'enzyme';
 
-import App from '../js/components/app';
+import Generation from '../js/components/generation';
 
-describe('<App />', () => {
+describe('<Generation />', () => {
 	it('Renders without crashing', () => {
-		shallow(<App />);
+		shallow(<Generation />);
 	});
 });

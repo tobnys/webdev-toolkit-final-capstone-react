@@ -5,7 +5,8 @@ import * as actions from "../actions/index";
 const initialState = {
     user: "user",
     isLoggedin: false,
-    fonts: "Font"
+    fonts: "Font",
+    target: "none"
 };
 
 export const webdevReducer = (state=initialState, action) => {
@@ -27,6 +28,14 @@ export const webdevReducer = (state=initialState, action) => {
             fonts: action.fonts,
         });
     }
+
+    else if (action.type === actions.SET_CATEGORY) {  
+        console.log(`Successfully set a category choice.`);
+        return Object.assign({}, state, {
+            target: action.target
+        });
+    }
+
     return state;
 };
 

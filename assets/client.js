@@ -28,7 +28,6 @@ function closeMenu() {
 
 // PAGE NAVIGATION 
 function switchPage(originalPage, targetPage) {
-    console.log("Inside function");
     $(`${originalPage}`).animate({
         left: "250px",
         opacity: "0"
@@ -295,9 +294,46 @@ $(document).ready(function () {
 
     // CATEGORY SUB-PAGES
     $("#c-html, #c-css, #c-js, #c-jquery, #c-node, #c-react").click(function (e) {
-        e.preventDefault();
         switchPage(currentPage, ".category-sub-page");
+        appendCategoryHTML(e.currentTarget.id);
     });
+
+    function appendCategoryHTML(t){
+        let cHref = "";
+        let mHref = "";
+
+        if(t === "c-html"){
+            cHref = "https://cdn.makeawebsitehub.com/wp-content/uploads/2015/06/HTML5-Mega-Cheat-Sheet-A4-Print-ready.pdf";
+            mHref = "https://developer.mozilla.org/en-US/docs/Web/HTML";
+        }
+        else if(t === "c-css"){
+            cHref = "https://www.smashingmagazine.com/wp-content/uploads/images/css3-cheat-sheet/css3-cheat-sheet.pdf";
+            mHref = "https://developer.mozilla.org/en-US/docs/Web/CSS";
+        }
+        else if(t === "c-js"){
+            cHref = "http://www.cheat-sheets.org/saved-copy/jsquick.pdf";
+            mHref = "https://developer.mozilla.org/en-US/docs/Web/JavaScript";
+        }
+        else if(t === "c-jquery"){
+            cHref = "https://oscarotero.com/jquery/";
+            mHref = "https://api.jquery.com/";
+        }
+        else if(t === "c-node"){
+            cHref = "https://gist.github.com/LeCoupa/985b82968d8285987dc3";
+            mHref = "https://nodejs.org/en/docs/";
+        }
+        else if(t === "c-react"){
+            cHref = "https://reactcheatsheet.com/";
+            mHref = "https://reactjs.org/docs/hello-world.html";
+        }
+
+        setHref(cHref, mHref)
+    }
+    
+    function setHref(one, two){
+        $("#cHref").attr("href", one);
+        $("#mHref").attr("href", two);
+    }
 
     // CATEGORY PAGE BACK ARROW
     $("#back-arrow").click(function (e) {

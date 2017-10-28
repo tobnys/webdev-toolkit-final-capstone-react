@@ -4,12 +4,19 @@ import 'core-js/es6/set';
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
 
+const {connect} = require('react-redux');
+const {setCategory} = require("../actions/index");
+
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
 
 Enzyme.configure({adapter: new Adapter()});
 
-class CategorySub extends Component {
+export class CategorySub extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render(){
         return(
             <section className="category-sub-page">
@@ -32,12 +39,12 @@ class CategorySub extends Component {
                             <div className="col-6">
                                 <h2>Cheat sheet</h2>
                                 <hr/>
-                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Link</a>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" id="cHref" target="_blank">Cheat Sheet</a>
                             </div>
                             <div className="col-6">
-                                <h2>MDN Reference</h2>
+                                <h2>Official Documentation</h2>
                                 <hr/>
-                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN Link</a>
+                                <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" id="mHref" target="_blank">Document</a>
                             </div>
                         </div>
                     </div>
@@ -47,4 +54,8 @@ class CategorySub extends Component {
     }
 }
 
-module.exports = CategorySub;
+const mapStateToProps = state => ({ 
+    user: state.user
+});
+
+export default connect(mapStateToProps)(CategorySub);

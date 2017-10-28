@@ -98,3 +98,11 @@ export const fetchFontSuccess = (fonts) => {
   }
 };
 
+// CATEGORY
+export const SET_CATEGORY = "SET_CATEGORY";
+export const setCategory = (target) => dispatch => {
+  return {
+    type: SET_CATEGORY,
+    target
+  }
+};
