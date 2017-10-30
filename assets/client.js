@@ -1,6 +1,7 @@
 let currentPage = ".landing-page";
 
 function closeMenu() {
+    console.log("CloseMenu");
     let value = $(".main-nav").css("height");
     if ($(window).width() < 1024) {
         if (value === "50px") {
@@ -20,11 +21,36 @@ function closeMenu() {
             $(".inline-nav-container a").animate({
                 opacity: "0"
             })
-            $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.2)")
+            $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.95)")
             $(".main-nav a").css("display", "none")
         }
     }
 }
+
+$(window).resize(function(){
+    console.log($(window).width());
+    let value = $(".main-nav").css("height");
+    if ($(window).width() > 1024) {
+        $(".inline-nav-container a").animate({
+            opacity: "1"
+        })
+        $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.95)")
+        $(".main-nav a").css("display", "block")
+    }
+    else if($(window).width() < 1024) {
+        if(value === "50px"){
+            console.log("50px");
+            $(".inline-nav-container a").css("display", "none")
+        }
+        else {
+            $(".inline-nav-container a").animate({
+                opacity: "0"
+            })
+            $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.95)")
+            $(".main-nav a").css("display", "none")
+        }
+    }
+});
 
 // PAGE NAVIGATION 
 function switchPage(originalPage, targetPage) {
@@ -278,6 +304,7 @@ $(document).ready(function () {
     });
 
     $("#page-generations").click(function (e) {
+        console.log("click works");
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".generation-page");
@@ -301,38 +328,46 @@ $(document).ready(function () {
     function appendCategoryHTML(t){
         let cHref = "";
         let mHref = "";
+        let title = "Title";
 
         if(t === "c-html"){
             cHref = "https://cdn.makeawebsitehub.com/wp-content/uploads/2015/06/HTML5-Mega-Cheat-Sheet-A4-Print-ready.pdf";
             mHref = "https://developer.mozilla.org/en-US/docs/Web/HTML";
+            title = "HTML5";
         }
         else if(t === "c-css"){
             cHref = "https://www.smashingmagazine.com/wp-content/uploads/images/css3-cheat-sheet/css3-cheat-sheet.pdf";
             mHref = "https://developer.mozilla.org/en-US/docs/Web/CSS";
+            title = "CSS3";
         }
         else if(t === "c-js"){
             cHref = "http://www.cheat-sheets.org/saved-copy/jsquick.pdf";
             mHref = "https://developer.mozilla.org/en-US/docs/Web/JavaScript";
+            title = "JavaScript";
         }
         else if(t === "c-jquery"){
             cHref = "https://oscarotero.com/jquery/";
             mHref = "https://api.jquery.com/";
+            title = "jQuery";
         }
         else if(t === "c-node"){
             cHref = "https://gist.github.com/LeCoupa/985b82968d8285987dc3";
             mHref = "https://nodejs.org/en/docs/";
+            title = "Node.JS";
         }
         else if(t === "c-react"){
             cHref = "https://reactcheatsheet.com/";
             mHref = "https://reactjs.org/docs/hello-world.html";
+            title = "React";
         }
 
-        setHref(cHref, mHref)
+        setHref(cHref, mHref, title)
     }
     
-    function setHref(one, two){
+    function setHref(one, two, three){
         $("#cHref").attr("href", one);
         $("#mHref").attr("href", two);
+        $("#c-sub-title").text(three);
     }
 
     // CATEGORY PAGE BACK ARROW

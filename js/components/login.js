@@ -28,7 +28,7 @@ export class Login extends Component {
             <section className="login-page">
                 <header>
                     <div className="col-12">
-                        <h1>Hello {this.props.user}</h1>
+                        <h1>Login</h1>
                     </div>
                 </header>
                 <div className="row">

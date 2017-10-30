@@ -41,7 +41,7 @@ export class Font extends Component {
                 </div>
                 <div className="row">
                     <div className="col-4">
-                        <a href="asd" id="card-1" target="_blank">
+                        <a href="https://fonts.google.com/" id="card-1" target="_blank">
                             <div className="font-card card-1">
                                 <h2>Hello</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
@@ -49,7 +49,7 @@ export class Font extends Component {
                         </a>
                     </div>
                     <div className="col-4">
-                        <a href="asd" id="card-2" target="_blank">
+                        <a href="https://fonts.google.com/" id="card-2" target="_blank">
                             <div className="font-card card-2">
                                 <h2>Header</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
@@ -57,7 +57,7 @@ export class Font extends Component {
                         </a>
                     </div>
                     <div className="col-4">
-                        <a href="asd" id="card-3" target="_blank">
+                        <a href="https://fonts.google.com/" id="card-3" target="_blank">
                             <div className="font-card card-3">
                                 <h2>Header</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
@@ -67,7 +67,7 @@ export class Font extends Component {
                 </div>
                 <div className="row">
                     <div className="col-4">
-                        <a href="asd" id="card-4" target="_blank">
+                        <a href="https://fonts.google.com/" id="card-4" target="_blank">
                             <div className="font-card card-4">
                                 <h2>Header</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
@@ -75,7 +75,7 @@ export class Font extends Component {
                         </a>
                     </div>
                     <div className="col-4">
-                        <a href="asd" id="card-5" target="_blank">
+                        <a href="https://fonts.google.com/" id="card-5" target="_blank">
                             <div className="font-card card-5">
                                 <h2>Header</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>
@@ -83,7 +83,7 @@ export class Font extends Component {
                         </a>
                     </div>
                     <div className="col-4">
-                        <a href="asd" id="card-6" target="_blank">
+                        <a href="https://fonts.google.com/" id="card-6" target="_blank">
                             <div className="font-card card-6">
                                 <h2>Header</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam condimentum tristique tellus et iaculis. Curabitur quis erat at orci facilisis molestie. Vestibulum porta rutrum nisi ac pharetra.</p>

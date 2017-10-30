@@ -22,7 +22,7 @@ export class CategorySub extends Component {
             <section className="category-sub-page">
                 <header>
                     <div className="col-12">
-                        <h1>Category sub-page</h1>
+                        <h1 id="c-sub-title">Category sub-page</h1>
                     </div>
                 </header>
         

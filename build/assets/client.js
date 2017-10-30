@@ -1,6 +1,7 @@
 let currentPage = ".landing-page";
 
 function closeMenu() {
+    console.log("CloseMenu");
     let value = $(".main-nav").css("height");
     if ($(window).width() < 1024) {
         if (value === "50px") {
@@ -20,11 +21,36 @@ function closeMenu() {
             $(".inline-nav-container a").animate({
                 opacity: "0"
             })
-            $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.2)")
+            $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.95)")
             $(".main-nav a").css("display", "none")
         }
     }
 }
+
+$(window).resize(function(){
+    console.log($(window).width());
+    let value = $(".main-nav").css("height");
+    if ($(window).width() > 1024) {
+        $(".inline-nav-container a").animate({
+            opacity: "1"
+        })
+        $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.95)")
+        $(".main-nav a").css("display", "block")
+    }
+    else if($(window).width() < 1024) {
+        if(value === "50px"){
+            console.log("50px");
+            $(".inline-nav-container a").css("display", "none")
+        }
+        else {
+            $(".inline-nav-container a").animate({
+                opacity: "0"
+            })
+            $(".main-nav").css("background-color", "rgba(0, 119, 131, 0.95)")
+            $(".main-nav a").css("display", "none")
+        }
+    }
+});
 
 // PAGE NAVIGATION 
 function switchPage(originalPage, targetPage) {
@@ -278,6 +304,7 @@ $(document).ready(function () {
     });
 
     $("#page-generations").click(function (e) {
+        console.log("click works");
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".generation-page");
