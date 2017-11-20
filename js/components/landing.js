@@ -19,11 +19,28 @@ export default class Landing extends Component {
                 </div>
                 </header>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 pad-bot">
                         <h2>Application description</h2>
                         <hr/>
-                        <p>This application was created in order to collect various web development associated tools in one single "easy-to-reach" application. The functions on this page are created from scratch with an attempt from me to try to replicate these great functions that mostly already exists!</p>
-                        <p>The more technical part of the application is that you can enter the admin panel and change various properties about the different functions on the page, use the demo account to try it out.</p>
+                        <p>This application was created in order to collect various web development associated tools in one single "easy-to-reach" application.</p>
+                        <a id="page-generations" alt="Generate a random text." title="Generate a random text.">
+                            <div className="link-container gene" id="page-generations">
+                                <i className="fa fa-align-justify" aria-hidden="true"></i>
+                                <p>Generate a random text.</p>
+                            </div>
+                        </a> 
+                        <a id="page-categories" alt="Browse cheat sheets." title="Browse cheat sheets.">
+                            <div className="link-container cate" id="page-categories">
+                            <i className="fa fa-file-o" aria-hidden="true"></i>
+                                <p>Browse cheat sheets.</p>
+                            </div>
+                        </a> 
+                        <a id="page-fonts" alt="Browse fonts." title="Browse fonts.">
+                            <div className="link-container font" id="page-fonts">
+                            <i className="fa fa-font" aria-hidden="true"></i>
+                                <p>Browse fonts.</p>
+                            </div>
+                        </a>
                     </div>
                     <div className="col-6">
                         <h2>Demo</h2>

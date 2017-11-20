@@ -94,7 +94,7 @@ a:-webkit-any-link {
 .main-nav {
     position: fixed;
     width: 100%;
-    background-color: rgba(0, 119, 131, 0.2);
+    background-color: rgba(0, 119, 131, 0.95);
     border-bottom: 1px solid rgba(0,0,0,.15);
     height: 50px;
     margin-bottom: 50px;
@@ -199,6 +199,45 @@ a:-webkit-any-link {
     text-align: center;
     margin: 0 auto;
 }
+
+.pad-bot {
+    padding-bottom: 20px;
+}
+
+.landing-page .link-container {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid white;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.landing-page .link-container:hover {
+    cursor: pointer;
+}
+
+.landing-page .link-container a {
+    display: block;
+    color: white;
+    padding: 0;
+    width: 60%;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-page .link-container p {
+    color: white;
+    padding: 0;
+}
+
+.landing-page .link-container i {
+    color: white;
+    padding: 5px;
+    font-size: 65px;
+}
+
 
 /* ------------------------------------- */
 /* LOGIN PAGE */

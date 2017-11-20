@@ -26262,7 +26262,6 @@
 	                        )
 	                    );
 	                } else {
-	                    console.log("User is not logged in");
 	                    return _react2.default.createElement(
 	                        'ul',
 	                        { className: 'right-nav' },
@@ -72597,23 +72596,59 @@
 	                    { className: 'row' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'col-6' },
+	                        { className: 'col-6 pad-bot' },
 	                        _react2.default.createElement(
 	                            'h2',
 	                            null,
 	                            'Application description'
 	                        ),
 	                        _react2.default.createElement('hr', null),
-	                        '>',
 	                        _react2.default.createElement(
 	                            'p',
 	                            null,
-	                            'This application was created in order to collect various web development associated tools in one single "easy-to-reach" application. The functions on this page are created from scratch with an attempt from me to try to replicate these great functions that mostly already exists!'
+	                            'This application was created in order to collect various web development associated tools in one single "easy-to-reach" application.'
 	                        ),
 	                        _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            'The more technical part of the application is that you can enter the admin panel and change various properties about the different functions on the page, use the demo account to try it out.'
+	                            'a',
+	                            { id: 'page-generations', alt: 'Generate a random text.', title: 'Generate a random text.' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'link-container gene', id: 'page-generations' },
+	                                _react2.default.createElement('i', { className: 'fa fa-align-justify', 'aria-hidden': 'true' }),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Generate a random text.'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'a',
+	                            { id: 'page-categories', alt: 'Browse cheat sheets.', title: 'Browse cheat sheets.' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'link-container cate', id: 'page-categories' },
+	                                _react2.default.createElement('i', { className: 'fa fa-file-o', 'aria-hidden': 'true' }),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Browse cheat sheets.'
+	                                )
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'a',
+	                            { id: 'page-fonts', alt: 'Browse fonts.', title: 'Browse fonts.' },
+	                            _react2.default.createElement(
+	                                'div',
+	                                { className: 'link-container font', id: 'page-fonts' },
+	                                _react2.default.createElement('i', { className: 'fa fa-font', 'aria-hidden': 'true' }),
+	                                _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    'Browse fonts.'
+	                                )
+	                            )
 	                        )
 	                    ),
 	                    _react2.default.createElement(
@@ -72728,8 +72763,7 @@
 	                        _react2.default.createElement(
 	                            'h1',
 	                            null,
-	                            'Hello ',
-	                            this.props.user
+	                            'Login'
 	                        )
 	                    )
 	                ),
@@ -73290,7 +73324,7 @@
 	                        { className: 'col-12' },
 	                        _react2.default.createElement(
 	                            'h1',
-	                            null,
+	                            { id: 'c-sub-title' },
 	                            'Category sub-page'
 	                        )
 	                    )
@@ -73487,7 +73521,7 @@
 	                        { className: 'col-4' },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: 'asd', id: 'card-1', target: '_blank' },
+	                            { href: 'https://fonts.google.com/', id: 'card-1', target: '_blank' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'font-card card-1' },
@@ -73509,7 +73543,7 @@
 	                        { className: 'col-4' },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: 'asd', id: 'card-2', target: '_blank' },
+	                            { href: 'https://fonts.google.com/', id: 'card-2', target: '_blank' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'font-card card-2' },
@@ -73531,7 +73565,7 @@
 	                        { className: 'col-4' },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: 'asd', id: 'card-3', target: '_blank' },
+	                            { href: 'https://fonts.google.com/', id: 'card-3', target: '_blank' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'font-card card-3' },
@@ -73557,7 +73591,7 @@
 	                        { className: 'col-4' },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: 'asd', id: 'card-4', target: '_blank' },
+	                            { href: 'https://fonts.google.com/', id: 'card-4', target: '_blank' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'font-card card-4' },
@@ -73579,7 +73613,7 @@
 	                        { className: 'col-4' },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: 'asd', id: 'card-5', target: '_blank' },
+	                            { href: 'https://fonts.google.com/', id: 'card-5', target: '_blank' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'font-card card-5' },
@@ -73601,7 +73635,7 @@
 	                        { className: 'col-4' },
 	                        _react2.default.createElement(
 	                            'a',
-	                            { href: 'asd', id: 'card-6', target: '_blank' },
+	                            { href: 'https://fonts.google.com/', id: 'card-6', target: '_blank' },
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'font-card card-6' },
@@ -73911,7 +73945,7 @@
 	                            ),
 	                            _react2.default.createElement(
 	                                'a',
-	                                { href: 'https://github.com/tobnys/webdev-toolkit-final-capstone', target: '_blank', className: 'icon' },
+	                                { href: 'https://www.linkedin.com/in/tobnys/', target: '_blank', className: 'icon' },
 	                                _react2.default.createElement('i', { className: 'fa fa-linkedin', 'aria-hidden': 'true' })
 	                            ),
 	                            _react2.default.createElement(

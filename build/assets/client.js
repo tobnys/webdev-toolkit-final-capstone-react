@@ -1,7 +1,7 @@
 let currentPage = ".landing-page";
 
 function closeMenu() {
-    console.log("CloseMenu");
+    //console.log("CloseMenu");
     let value = $(".main-nav").css("height");
     if ($(window).width() < 1024) {
         if (value === "50px") {
@@ -28,7 +28,7 @@ function closeMenu() {
 }
 
 $(window).resize(function(){
-    console.log($(window).width());
+    //console.log($(window).width());
     let value = $(".main-nav").css("height");
     if ($(window).width() > 1024) {
         $(".inline-nav-container a").animate({
@@ -39,7 +39,7 @@ $(window).resize(function(){
     }
     else if($(window).width() < 1024) {
         if(value === "50px"){
-            console.log("50px");
+            //console.log("50px");
             $(".inline-nav-container a").css("display", "none")
         }
         else {
@@ -58,7 +58,7 @@ function switchPage(originalPage, targetPage) {
         left: "250px",
         opacity: "0"
     }, 200, function () {
-        console.log(originalPage, targetPage);
+        //console.log(originalPage, targetPage);
         $(this).css("display", "none");
         $(`${targetPage}`).css("display", "block");
         $(`${targetPage}`).animate({
@@ -73,8 +73,8 @@ function setActiveButton(button) {
     $(button).css("border-bottom", "3px solid rgb(0, 231, 255)");
     $(button).css("color", "rgb(0, 231, 255)");
 
-    console.log($("li").children())
-    console.log(button.id)
+    //console.log($("li").children())
+    //console.log(button.id)
 
     $("li").children().not(`#${button.id}`).css("border-bottom", "3px solid rgba(0, 231, 255, 0)");
     $("li").children().not(`#${button.id}`).css("color", "rgba(255, 255, 255, 1)");
@@ -139,12 +139,12 @@ function webFontsReq(target) {
         method: "GET",
         url: `https://webdev-toolkit.herokuapp.com/api/functional/fonts/${target}`,
         success: function (res) {
-            console.log("API call success");
+            //console.log("API call success");
             appendHTML(res);
             applyFonts(res);
         },
         error: function (err) {
-            console.log("API call failed")
+            //console.log("API call failed")
         },
     })
 };
@@ -188,12 +188,12 @@ function generationReq(p) {
             p: p,
         },
         success: function (res) {
-            console.log("API call success");
-            console.log(res);
+            //console.log("API call success");
+            //console.log(res);
             appendGeneration(res);
         },
         error: function (err) {
-            console.log("API call failed")
+            //console.log("API call failed")
         },
     })
 }
@@ -212,11 +212,11 @@ function registerUser(u, p) {
             password: p
         },
         success: function (res) {
-            console.log("API call success");
-            console.log(res);
+            //console.log("API call success");
+            //console.log(res);
         },
         error: function (err) {
-            console.log("API call failed")
+            //console.log("API call failed")
         },
     });
 }
@@ -230,11 +230,11 @@ function loginUser(u, p) {
             password: p
         },
         success: function (res) {
-            console.log("API call success");
+            //console.log("API call success");
 
         },
         error: function (err) {
-            console.log("API call failed");
+            //console.log("API call failed");
         }
     });
 }
@@ -249,7 +249,7 @@ function redirectWelcome() {
         $(".dashboard-page").animate({
             opacity: "1"
         }, 200, function () {
-            console.log(currentPage);
+            //console.log(currentPage);
             currentPage = ".dashboard-page";
         });
     });
@@ -263,14 +263,14 @@ function populateDashboard() {
         method: "GET",
         url: `https://webdev-toolkit.herokuapp.com/api/functional/statistics`,
         success: function (res) {
-            console.log("API call success");
+            //console.log("API call success");
             // APPEND TEXT
             $("#num-logins").text(res.successfulLogins);
             $("#num-strings").text(res.stringsGenerated);
             $("#num-fonts").text(res.fontsGenerated);
         },
         error: function (err) {
-            console.log("API call failed");
+            //console.log("API call failed");
         }
     });
 }
@@ -303,16 +303,31 @@ $(document).ready(function () {
         }
     });
 
+    $(".gene").click(function (e) {
+        e.preventDefault();
+        switchPage(currentPage, ".generation-page");
+    });
+
+    $(".cate").click(function (e) {
+        e.preventDefault();
+        switchPage(currentPage, ".category-page");
+    });
+
+    $(".font").click(function (e) {
+        e.preventDefault();
+        switchPage(currentPage, ".font-page");
+    });
+
     $("#page-generations").click(function (e) {
-        console.log("click works");
+        console.log("Hello")
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".generation-page");
         setActiveButton(this);
-        console.log("Btn works");
     });
 
     $("#page-categories").click(function (e) {
+        console.log("Hello")
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".category-page");
@@ -328,38 +343,46 @@ $(document).ready(function () {
     function appendCategoryHTML(t){
         let cHref = "";
         let mHref = "";
+        let title = "Title";
 
         if(t === "c-html"){
             cHref = "https://cdn.makeawebsitehub.com/wp-content/uploads/2015/06/HTML5-Mega-Cheat-Sheet-A4-Print-ready.pdf";
             mHref = "https://developer.mozilla.org/en-US/docs/Web/HTML";
+            title = "HTML5";
         }
         else if(t === "c-css"){
             cHref = "https://www.smashingmagazine.com/wp-content/uploads/images/css3-cheat-sheet/css3-cheat-sheet.pdf";
             mHref = "https://developer.mozilla.org/en-US/docs/Web/CSS";
+            title = "CSS3";
         }
         else if(t === "c-js"){
             cHref = "http://www.cheat-sheets.org/saved-copy/jsquick.pdf";
             mHref = "https://developer.mozilla.org/en-US/docs/Web/JavaScript";
+            title = "JavaScript";
         }
         else if(t === "c-jquery"){
             cHref = "https://oscarotero.com/jquery/";
             mHref = "https://api.jquery.com/";
+            title = "jQuery";
         }
         else if(t === "c-node"){
             cHref = "https://gist.github.com/LeCoupa/985b82968d8285987dc3";
             mHref = "https://nodejs.org/en/docs/";
+            title = "Node.JS";
         }
         else if(t === "c-react"){
             cHref = "https://reactcheatsheet.com/";
             mHref = "https://reactjs.org/docs/hello-world.html";
+            title = "React";
         }
 
-        setHref(cHref, mHref)
+        setHref(cHref, mHref, title)
     }
     
-    function setHref(one, two){
+    function setHref(one, two, three){
         $("#cHref").attr("href", one);
         $("#mHref").attr("href", two);
+        $("#c-sub-title").text(three);
     }
 
     // CATEGORY PAGE BACK ARROW
@@ -408,7 +431,6 @@ $(document).ready(function () {
             showInputMessage("Please enter some settings above!");
         }
         else if (pValue > 5 || pValue <= 0) {
-            console.log("No");
             showInputMessage("Please correct the paragraph setting!");
         }
         else {
@@ -447,7 +469,6 @@ $(document).ready(function () {
 });
 
 $(document).on("click", "#page-dashboard", function (e) {
-    console.log("Dashboard clicked.")
     e.preventDefault();
     closeMenu();
     switchPage(currentPage, ".dashboard-page");

@@ -303,7 +303,23 @@ $(document).ready(function () {
         }
     });
 
+    $(".gene").click(function (e) {
+        e.preventDefault();
+        switchPage(currentPage, ".generation-page");
+    });
+
+    $(".cate").click(function (e) {
+        e.preventDefault();
+        switchPage(currentPage, ".category-page");
+    });
+
+    $(".font").click(function (e) {
+        e.preventDefault();
+        switchPage(currentPage, ".font-page");
+    });
+
     $("#page-generations").click(function (e) {
+        console.log("Hello")
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".generation-page");
@@ -311,6 +327,7 @@ $(document).ready(function () {
     });
 
     $("#page-categories").click(function (e) {
+        console.log("Hello")
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".category-page");
