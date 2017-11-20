@@ -21,7 +21,7 @@ export default class Landing extends Component {
                 <div className="row">
                     <div className="col-6">
                         <h2>Application description</h2>
-                        <hr/>>
+                        <hr/>
                         <p>This application was created in order to collect various web development associated tools in one single "easy-to-reach" application. The functions on this page are created from scratch with an attempt from me to try to replicate these great functions that mostly already exists!</p>
                         <p>The more technical part of the application is that you can enter the admin panel and change various properties about the different functions on the page, use the demo account to try it out.</p>
                     </div>
