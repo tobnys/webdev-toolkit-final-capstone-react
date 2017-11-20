@@ -28,7 +28,6 @@ export class Navigation extends Component {
                 );
             }
             else {
-                console.log("User is not logged in");
                 return( <ul className="right-nav">
                     <li><a href="#" id="pageLogin" href="#">Login</a></li>
                     <li><a href="#" id="page-signup" href="#">Sign up</a></li>

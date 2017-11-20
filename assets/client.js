@@ -1,7 +1,7 @@
 let currentPage = ".landing-page";
 
 function closeMenu() {
-    console.log("CloseMenu");
+    //console.log("CloseMenu");
     let value = $(".main-nav").css("height");
     if ($(window).width() < 1024) {
         if (value === "50px") {
@@ -28,7 +28,7 @@ function closeMenu() {
 }
 
 $(window).resize(function(){
-    console.log($(window).width());
+    //console.log($(window).width());
     let value = $(".main-nav").css("height");
     if ($(window).width() > 1024) {
         $(".inline-nav-container a").animate({
@@ -39,7 +39,7 @@ $(window).resize(function(){
     }
     else if($(window).width() < 1024) {
         if(value === "50px"){
-            console.log("50px");
+            //console.log("50px");
             $(".inline-nav-container a").css("display", "none")
         }
         else {
@@ -58,7 +58,7 @@ function switchPage(originalPage, targetPage) {
         left: "250px",
         opacity: "0"
     }, 200, function () {
-        console.log(originalPage, targetPage);
+        //console.log(originalPage, targetPage);
         $(this).css("display", "none");
         $(`${targetPage}`).css("display", "block");
         $(`${targetPage}`).animate({
@@ -73,8 +73,8 @@ function setActiveButton(button) {
     $(button).css("border-bottom", "3px solid rgb(0, 231, 255)");
     $(button).css("color", "rgb(0, 231, 255)");
 
-    console.log($("li").children())
-    console.log(button.id)
+    //console.log($("li").children())
+    //console.log(button.id)
 
     $("li").children().not(`#${button.id}`).css("border-bottom", "3px solid rgba(0, 231, 255, 0)");
     $("li").children().not(`#${button.id}`).css("color", "rgba(255, 255, 255, 1)");
@@ -139,12 +139,12 @@ function webFontsReq(target) {
         method: "GET",
         url: `https://webdev-toolkit.herokuapp.com/api/functional/fonts/${target}`,
         success: function (res) {
-            console.log("API call success");
+            //console.log("API call success");
             appendHTML(res);
             applyFonts(res);
         },
         error: function (err) {
-            console.log("API call failed")
+            //console.log("API call failed")
         },
     })
 };
@@ -188,12 +188,12 @@ function generationReq(p) {
             p: p,
         },
         success: function (res) {
-            console.log("API call success");
-            console.log(res);
+            //console.log("API call success");
+            //console.log(res);
             appendGeneration(res);
         },
         error: function (err) {
-            console.log("API call failed")
+            //console.log("API call failed")
         },
     })
 }
@@ -212,11 +212,11 @@ function registerUser(u, p) {
             password: p
         },
         success: function (res) {
-            console.log("API call success");
-            console.log(res);
+            //console.log("API call success");
+            //console.log(res);
         },
         error: function (err) {
-            console.log("API call failed")
+            //console.log("API call failed")
         },
     });
 }
@@ -230,11 +230,11 @@ function loginUser(u, p) {
             password: p
         },
         success: function (res) {
-            console.log("API call success");
+            //console.log("API call success");
 
         },
         error: function (err) {
-            console.log("API call failed");
+            //console.log("API call failed");
         }
     });
 }
@@ -249,7 +249,7 @@ function redirectWelcome() {
         $(".dashboard-page").animate({
             opacity: "1"
         }, 200, function () {
-            console.log(currentPage);
+            //console.log(currentPage);
             currentPage = ".dashboard-page";
         });
     });
@@ -263,14 +263,14 @@ function populateDashboard() {
         method: "GET",
         url: `https://webdev-toolkit.herokuapp.com/api/functional/statistics`,
         success: function (res) {
-            console.log("API call success");
+            //console.log("API call success");
             // APPEND TEXT
             $("#num-logins").text(res.successfulLogins);
             $("#num-strings").text(res.stringsGenerated);
             $("#num-fonts").text(res.fontsGenerated);
         },
         error: function (err) {
-            console.log("API call failed");
+            //console.log("API call failed");
         }
     });
 }
@@ -304,12 +304,10 @@ $(document).ready(function () {
     });
 
     $("#page-generations").click(function (e) {
-        console.log("click works");
         e.preventDefault();
         closeMenu();
         switchPage(currentPage, ".generation-page");
         setActiveButton(this);
-        console.log("Btn works");
     });
 
     $("#page-categories").click(function (e) {
@@ -416,7 +414,6 @@ $(document).ready(function () {
             showInputMessage("Please enter some settings above!");
         }
         else if (pValue > 5 || pValue <= 0) {
-            console.log("No");
             showInputMessage("Please correct the paragraph setting!");
         }
         else {
@@ -455,7 +452,6 @@ $(document).ready(function () {
 });
 
 $(document).on("click", "#page-dashboard", function (e) {
-    console.log("Dashboard clicked.")
     e.preventDefault();
     closeMenu();
     switchPage(currentPage, ".dashboard-page");
